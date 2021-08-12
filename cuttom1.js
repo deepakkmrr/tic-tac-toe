@@ -12,18 +12,21 @@ const matchingPoints = [
     ["B3","B5","B7"]
 ];
 
+const currentPlayerName = () => (currentPlayer === "1")?"Player 1":"Player 2";
+const currentValue = () =>  (currentPlayer === "1")?"X":"O";
+const toggleCurrentPlayer = () =>  {currentPlayer = ((currentPlayer === "1")?"0":"1")};
+
 const buttonTapped = (id) => {
-    if(currentGameScenario.length == 0){
-        addHistory(((currentPlayer == "1")?"Player 1":"Player 2") + " started the game!");
+    if(Object.keys(currentGameScenario).length === 0){
+        addHistory( currentPlayerName() + " started the game!");
     }
 
     if(!(id in currentGameScenario)){
-        document.getElementById(id).value = ((currentPlayer == "1")?"X":"O");
-        addHistory(((currentPlayer == "1")?"Player 1":"Player 2") + " filled " + ((currentPlayer == "1")?"X":"O"));
-        currentGameScenario[id] = ((currentPlayer == "1")?"X":"O");
-       
-        currentPlayer = (currentPlayer == "1")?"0":"1";
+        document.getElementById(id).value = currentValue();
+        addHistory(currentPlayerName() + " filled " + currentValue());
+        currentGameScenario[id] = currentValue();
         checkResult(id);
+        toggleCurrentPlayer();
     }
 }
 
@@ -39,7 +42,7 @@ const checkResult = (buttonTapped) => {
     var winingPoints = matchingPoints.filter(getWiningPoints(buttonTapped));
     if(winingPoints.length > 0){
         for(point of winingPoints){
-            if(currentGameScenario[point[0]] == currentGameScenario[point[1]] && currentGameScenario[point[1]] == currentGameScenario[point[2]]){
+            if(currentGameScenario[point[0]] === currentGameScenario[point[1]] && currentGameScenario[point[1]] === currentGameScenario[point[2]]){
                 anyoneWon = true;
                 for(p of point){
                     document.getElementById(p).style.backgroundColor="green";
@@ -51,9 +54,9 @@ const checkResult = (buttonTapped) => {
 
     if(anyoneWon){
         disableAllButtons();
-        addHistory(((currentPlayer == "1")?"Player 1":"Player 2") + " Won!");
+        addHistory(currentPlayerName() + " Won!");
     }
-    else if(Object.keys(currentGameScenario).length == 9){
+    else if(Object.keys(currentGameScenario).length === 9){
         disableAllButtons();
         addHistory("Match Tie!");
     }
