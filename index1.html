@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="custom.js"></script>
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <div class="col-md-7">
+        <table class="table-responsive play-table">
+            <tr>
+                <td>
+                    <input type="button" id="B1" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+                <td>
+                    <input type="button" id="B2" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+                <td>
+                    <input type="button" id="B3" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" id="B4" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+                <td>
+                    <input type="button" id="B5" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+                <td>
+                    <input type="button" id="B6" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" id="B7" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+                <td>
+                    <input type="button" id="B8" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+                <td>
+                    <input type="button" id="B9" onClick="buttonTapped(this.id)" class="btn button playtab" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-5">
+        <table class="table-responsive play-table">
+            <tr>
+                <td>
+                    <b>History</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="historyDiv" id="dvHistory"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="p-5">
+                    <input class="w-100-p btn btn-primary" onclick="reset()" type="button" id="btnReset"
+                        value="Reset" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
